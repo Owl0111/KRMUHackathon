@@ -22,10 +22,10 @@ const router  = createBrowserRouter(
 ]
 )
 function App() {
-
+  console.log(GetUserLocation() )
   return (
     <div>
-      <GetUserLocation />
+      
     <RouterProvider router={router} />
     </div>
   );
