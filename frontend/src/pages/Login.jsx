@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useParams } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -26,11 +27,12 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
 export default function Login() {
+  let {type} = useParams();
+  console.log(type);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -98,7 +100,7 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <RouterLink to='/register'>
+                <RouterLink to='/register/restaurant'>
                   {"Don't have an account? Sign Up"}
                 </RouterLink>
               </Grid>
