@@ -58,7 +58,7 @@ export default function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Login as a {type}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -100,14 +100,13 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <RouterLink to='/register/restaurant'>
+                <RouterLink to={`/register/${type}`}>
                   {"Don't have an account? Sign Up"}
                 </RouterLink>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

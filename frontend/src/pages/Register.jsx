@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -32,13 +32,16 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Register() {
+  let {type } = useParams();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const newUser = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+      type: type,
+      
+    }
   };
 
   return (
@@ -57,7 +60,7 @@ export default function Register() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Register
+            Register as {type}
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -65,10 +68,10 @@ export default function Register() {
                 <TextField
                   required
                   fullWidth
-                  id="restaurant-name"
-                  label="Restaurant Name"
-                  name="Restaurant"
-                  autoComplete="Restaurant Name"
+                  id={`${type}-name`}
+                  label={`${type}'s name`}
+                  name={"Restaurant"}
+                  autoComplete={"Restaurant Name"}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -92,12 +95,7 @@ export default function Register() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
+              
             </Grid>
             <Button
               type="submit"

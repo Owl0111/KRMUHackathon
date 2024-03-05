@@ -4,11 +4,13 @@ import Login from './pages/Login';
 import GetUserLocation from './Hooks/UseUserLocation';
 import Register from './pages/Register';
 import NavigationBar from './components/Navigation';
+import UserNgo from './pages/UserNgo';
+import Home from './pages/Home';
 const router  = createBrowserRouter(
   [
     {
     path:'/',
-    element: <div>audkhgkjsdfgjlakjl</div>
+    element: <Home />
     },
     {
       path:'/login/:type',
@@ -17,6 +19,10 @@ const router  = createBrowserRouter(
     {
       path:'/register/:type',
       element: <Register/>
+    },
+    {
+      path:'/logreg',
+      element: <UserNgo/>
     }
 ]
 )
